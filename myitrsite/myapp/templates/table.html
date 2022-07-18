@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+  <title>Table</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid" class="navbar-header" style="text-align: center">
+            
+        <form action="{% url 'logout' %}" method=post enctype="multipart/form-data">
+            {% csrf_token %}
+        <br>
+        <button type="submit" class="btn btn-info">Log out</button>
+        </form>
+        
+        </div>
+    </nav>
+
+    
+  <table class="table">
+    <thead>
+        <tr>
+            {% for k in header %}
+            <th>{{k}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in rows %}
+            <tr>
+                <td>{{r.Name}}</td>
+                <td>{{r.DOB}}</td>
+                <td>{{r.Gender}}</td>
+                <td>{{r.Email}}</td>
+                <td>{{r.Phone}}</td>
+                <td>{{r.Position}}</td>
+                <td>{{r.Company}}</td>
+                <td>{{r.Location}}</td>
+                <td>{{r.Experience}}</td>
+                <td>{{r.Salary}}</td>
+                <td>{{r.Degree}}</td>
+                <td>{{r.Notice}}</td>
+                <td>{{r.Pref}}</td>
+                <td>{{r.Key}}</td>   
+                <td>
+                    <form action="{% url 'send' r.Phone %}" method=post>
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Send mail</button>  
+                    </form> 
+                </td>  
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+  <br>
+
+    <form action="{% url 'home' %}" method=post>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Add another file</button>  
+    </form>
+    
+    
+    <form action="{% url 'stats' %}" method=post>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Show Stats</button>  
+    </form>
+    
+</div>
+
+</body>
+</html>

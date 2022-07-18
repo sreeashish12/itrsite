@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>Send Mail</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid" class="navbar-header" style="text-align: center">
+            
+        <form action="{% url 'logout' %}" method=post enctype="multipart/form-data">
+            {% csrf_token %}
+        <br>
+        <button type="submit" class="btn btn-info">Log out</button>
+        </form>
+        
+        </div>
+    </nav>
+
+    <img src="media/stat.png"/>
+
+    <form action="{% url 'table' %}" method=post>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">View Table</button>  
+    </form>
+    
+    <br>
+
+    <form action="{% url 'home' %}" method=post>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Add another file</button>  
+    </form>
+
+
+    
+</body>
+</html>

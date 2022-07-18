@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>Send Mail</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        .center {
+          margin: auto;
+          width: 50%;
+          border: 3px solid rgb(16, 107, 16);
+          padding: 10px;
+          text-align: center;
+        }
+      </style>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid" class="navbar-header" style="text-align: center">
+        
+        <form action="{% url 'logout' %}" method=post enctype="multipart/form-data">
+            {% csrf_token %}
+        <br>
+        <button type="submit" class="btn btn-info">Log out</button>
+        </form>
+        
+        </div>
+    </nav>
+
+    <div class="center">
+    <div class="badge badge-primary text-wrap center" style="width: 45rem; background-color: rgb(30, 145, 106);">
+        We have succesfully send the mail to {{name}}        
+    </div>
+    <br>
+    <br>
+
+    <form action="{% url 'table' %}" method=post>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Continue Sending mails</button>  
+    </form>
+    
+    <br>
+
+    <form action="{% url 'home' %}" method=post>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Add another file</button>  
+    </form>
+</div>
+</body>
+</html>
